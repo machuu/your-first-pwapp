@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  node:
+    image: node:12.9.0-stretch
+    security_opt: 
+      - label:disable
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "8081:8000"
+    command: sh -c "
+        echo 'Bootstrapping Node App'
+        && npm install
+        && node server.js
+      "
